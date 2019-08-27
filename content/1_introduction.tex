@@ -1,0 +1,74 @@
+\chapter{Introduction}
+
+\section{How to Use This Document}
+This document has been designed to be used with Overleaf. However, you should be able to compile it with any LaTeX environment. In case you have never worked with LaTeX before, it may be a good idea to do some tutorials first. The Overleaf documentation explains all important LaTeX concepts and contains helpful examples for all kinds of stuff: \url{https://www.overleaf.com/learn/latex/Main_Page}\par
+
+Unfortunately, \acl{HFU} does not provide an official LaTeX thesis template at this point in time. This template is student-made and therefore unofficial. Although it has been designed to follow all required guidelines, you should probably double check everything in case these guidelines changed. Use this at your own risk.\par
+
+In the following, we explain some basic functionality regarding this template.
+
+\section{Abbreviations}
+Abbreviations can be defined in the abbreviations.tex file. Once you defined them, you can use them in a sentence like this: \ac{HFU}. As you can see, the first occurrence of an abbreviation will be inserted as a non-abbreviated version followed by the abbreviation in brackets. If you use this abbreviation again, it won't insert the non-abbreviated form anymore: \ac{HFU}. However, you can force different versions at any point: for the short version use \acs{HFU}, for the long version use \acl{HFU} and for the full version use \acf{HFU}. Additionally, you can print the plural of an abbreviation (although it doesn't make any sense in this case) using \acsp{HFU}. 
+
+\section{Citations}
+Citations are implemented using BibLaTeX and will be displayed in IEEE style. Add your bibtex entries to the bibtex.bib file. After that, you can cite them as shown in the following examples.
+
+\subsection{Normal Quote}
+This is a normal sentence but we used an external source to come up with its content. Therefore, we must cite the external source using a reference like this: \cite{example}
+
+\subsection{Direct Quote}
+\begin{quote}
+    \textit{\enquote{This is a direct quote. Direct quotes are displayed using quotation marks and must be copied word by word from the original source.}} \cite{example}
+\end{quote}
+
+\subsection{Refering to Content Within This Document}
+\label{example_label}
+You can add a label mark at any position on the page as well as figures, tables and code listings. Exemplary, we labeled this subsection and can refer to it like this:  \cref{example_label}. You can also use \Cref{example_label}, if you want to capitalize the reference at the start of a sentence.
+
+
+\section{Figures}
+
+Figures can be inserted as shown below. Check out the Overleaf documentation for more information on how to use and style figures to your liking: \url{https://www.overleaf.com/learn/latex/Inserting_Images} As already mentioned above, you can refer to figures by citing its label: \cref{pic:hfu_logo} or \Cref{pic:hfu_logo}
+\begin{figure}[ht]  % figure position
+    \centering      % center the image
+    \includegraphics[width=.5\textwidth]{hfu_logo_vector_4C.eps}
+    \caption{HFU Logo}      % caption the image
+    \label{pic:hfu_logo}    % label the image for internal referencing
+\end{figure}
+
+
+\section{Tables}
+
+Tables can be inserted as shown below. Check out the Overleaf documentation for more information on how to use and style tables to your liking: \url{https://www.overleaf.com/learn/latex/Tables}
+
+\begin{table}[ht]   % table position
+    \centering
+    \footnotesize
+    \begin{tabular}{lcr} % columns and their alignment
+        \toprule    % separator line
+        Left-aligned column  & Centered column  & Right-aligned column \\
+        \midrule    % separator line
+        Value 1 & Value 2 & Value 3 \\
+        Value 4 & Value 5 & Value 6 \\
+        Value 7 & Value 8 & Value 9 \\
+        \bottomrule % separator line
+    \end{tabular}
+    \caption{Example table}
+    \label{table:example_table}
+\end{table}
+
+
+\section{Source Code Snippets}
+Source code can be inserted as shown below. Syntax highlighting is supported for many popular languages. As always, we can define a caption and a label to reference like this: \cref{code:helloworld} or \Cref{code:helloworld}
+
+\begin{lstlisting}[language=Java, caption=Hello World in Java, label=code:helloworld]
+public static void main(String args[]){
+    System.out.println("Hello World!");
+}
+\end{lstlisting}
+
+
+\section{That's it!}
+Congratulations! You know the basics of Latex as well as how to use this template and you are ready to start writing your thesis now. You can contribute to this template on GitHub in case you find any errors or add functionality.\par
+
+Good luck!

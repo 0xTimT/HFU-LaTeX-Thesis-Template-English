@@ -1,0 +1,225 @@
+% ##################################################
+% ENCODING
+% ##################################################
+\usepackage{cmap}               % PDF character encoding
+\usepackage[T1]{fontenc}        % 8-bit font encoding
+\usepackage[utf8]{inputenc}     % UTF-8 input encoding
+
+
+% ##################################################
+% DOCUMENT VARIABLES
+% ##################################################
+% Personal data
+\newcommand{\docAuthor}{Max Musterstudent}
+\newcommand{\docMatriculationNumber}{XXXXXX}
+\newcommand{\docStudyProgram}{Computer Science}
+\newcommand{\docStreetName}{Musterstr. 1}
+\newcommand{\docPostalCode}{XXXXX}
+\newcommand{\docCity}{Musterstadt}
+\newcommand{\docEmail}{max.musterstudent@hs-furtwangen.de}
+
+% Document data
+\newcommand{\docTitle}{HFU Thesis Template}
+\newcommand{\docSubTitle}{This is a fancy Subtitle}     % leave empty to remove
+\newcommand{\docType}{Bachelor Thesis}
+\newcommand{\docSupervisor}{Prof. Dr. Mustermann}
+\newcommand{\docCoSupervisor}{Prof. Dr. Musterfrau}
+\newcommand{\docDeadline}{DD.MM.YYYY}
+
+
+% ##################################################
+% GENERAL
+% ##################################################
+\usepackage{scrhack}            % better KOMA adaptions
+\usepackage[table]{xcolor}      % color support
+\usepackage{chngcntr}           % for renumbering stuff
+
+
+% ##################################################
+% PDF SETTINGS
+% ##################################################
+\usepackage[
+    colorlinks=false,
+   	linkcolor=black,
+   	citecolor=black,
+  	filecolor=black,
+	urlcolor=black,
+    bookmarks=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=3,
+    bookmarksnumbered,
+    plainpages=false,
+    pdfpagelabels=true,
+    hyperfootnotes,
+    pdftitle ={\docTitle},
+    pdfauthor={\docAuthor},
+    pdfcreator={\docAuthor}
+]{hyperref}
+
+
+% ##################################################
+% FONTS AND SPACING
+% ##################################################
+\renewcommand{\familydefault}{\sfdefault}   % default font
+\usepackage[onehalfspacing]{setspace}       % default 1.5 spacing
+\raggedbottom   % don't stretch spacing to fit page length
+
+% font sizes and styles
+\addtokomafont{chapter}{\sffamily\large\bfseries} 
+\addtokomafont{section}{\sffamily\normalsize\bfseries} 
+\addtokomafont{subsection}{\sffamily\normalsize\mdseries}
+\addtokomafont{caption}{\sffamily\normalsize\mdseries}
+
+
+% ##################################################
+% PAGE FORMATTING
+% ##################################################
+% Page layout
+\usepackage[
+	bindingoffset=1.5cm,
+	inner=2.5cm,
+	outer=2.5cm,
+	top=3cm,
+	bottom=2cm
+]{geometry}
+
+% Page header
+\usepackage[
+    headsepline,        % seperator line beneath page header on normal pages
+    plainheadsepline    % seperator line beneath page header on pages like ToC
+]{scrlayer-scrpage}
+\clearpairofpagestyles                  % clear default settings
+\addtokomafont{pagehead}{\normalfont}   % use normal font for page header
+\ohead*{\thepage}                       % page number
+\ihead*{\leftmark}                      % chapter name
+
+
+% ##################################################
+% IMAGES AND FIGURES
+% ##################################################
+\usepackage{graphicx}       % support for including images
+\graphicspath{{pictures/}}  % default path
+
+% simple numbering without chapter
+\renewcommand{\thefigure}{\arabic{figure}}
+\counterwithout{figure}{chapter}
+
+
+% ##################################################
+% TABLES
+% ##################################################
+\usepackage{booktabs}   % beautiful table style
+\usepackage{multirow}   % multi row and multi column table functionality
+
+% simple numbering without chapter
+\renewcommand{\thetable}{\arabic{table}}
+\counterwithout{table}{chapter}
+
+% ##################################################
+% SOURCE CODE LISTINGS
+% ##################################################
+\usepackage{listings}
+\usepackage{beramono}   % use a typewriter font which supports bold characters
+
+\renewcommand{\lstlistlistingname}{List of Code Listings}   % 
+\renewcommand{\lstlistingname}{Code Listing}
+\newcommand{\listoflolentryname}{\lstlistingname}   % prefix for List of Code Listings
+
+% define colors for source code highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.5,0,0.33}
+\definecolor{codepurblue}{rgb}{0.16,0.0,1.0}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% set source code style
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\bfseries\color{codepurple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurblue},
+    basicstyle=\scriptsize\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    escapeinside={(*@}{@*)}
+}
+\lstset{style=codestyle, numberbychapter=false}
+
+
+% ##################################################
+% TABLE OF CONTENTS
+% ##################################################
+\KOMAoptions{toc=chapterentrydotfill}       % dotted lines for chapters
+\addtokomafont{chapterentry}{\normalfont}   % use normal font for chapter entries
+
+% spacing
+\DeclareTOCStyleEntry[beforeskip=0cm]{chapter}{chapter}
+\DeclareTOCStyleEntry[beforeskip=0cm]{section}{section}
+\DeclareTOCStyleEntry[beforeskip=0cm]{default}{subsection}
+
+% colons after entry names
+\BeforeStartingTOC[lof]{\def\autodot{:}}
+\BeforeStartingTOC[lot]{\def\autodot{:}}
+\BeforeStartingTOC[lol]{\def\autodot{:}}
+
+
+% ##################################################
+% BIBLIOGRAPHY
+% ##################################################
+\usepackage{csquotes}
+\usepackage[backend=biber,citestyle=ieee]{biblatex}
+\addbibresource{bibtex.bib}
+\setlength\bibitemsep{.5\baselineskip}
+\setcounter{biburlnumpenalty}{9000} % break URLs on numbers
+\setcounter{biburllcpenalty}{9000}  % break URLs on lower case letters
+\setcounter{biburlucpenalty}{9000}  % break URLs on upper case letters
+
+
+% ##################################################
+% ABBREVIATIONS
+% ##################################################
+\usepackage[printonlyused]{acronym}
+
+% start all words with a capital letter in the list of abbreviations
+\usepackage{mfirstuc}
+\makeatletter
+\patchcmd{\AC@@acro}{] #3}{] \capitalisewords{#3}}{}{}
+\makeatother
+
+
+% ##################################################
+% APPENDIX
+% ##################################################
+\usepackage[title,titletoc]{appendix}
+
+% appendix chapter
+\newcommand{\appendixchapter}[1]{
+    \cleardoublepage
+    \pagenumbering{arabic}
+    \renewcommand{\thepage}{\thechapter-\arabic{page}}
+    \chapter{#1}
+}
+
+% insert monthly report pdf as picture in order to keep page header
+\newcommand{\monthlyreport}[2]{
+    \section{#1}
+    \centering
+    \includegraphics[trim=55 35 55 35,clip,width=1\textwidth]{#2}
+    \clearpage
+}
+
+
+% ##################################################
+% MISC
+% ##################################################
+% better referencing of images, tables, etc.
+\usepackage[nameinlink, noabbrev]{cleveref} 
