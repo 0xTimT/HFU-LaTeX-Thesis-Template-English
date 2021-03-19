@@ -70,6 +70,10 @@
 \addtokomafont{subsection}{\sffamily\normalsize\mdseries}
 \addtokomafont{caption}{\sffamily\normalsize\mdseries}
 
+% url font style
+\usepackage{relsize}
+\renewcommand*{\UrlFont}{\ttfamily\smaller\relax}
+
 
 % ##################################################
 % PAGE FORMATTING
@@ -188,12 +192,6 @@
 % ABBREVIATIONS
 % ##################################################
 \usepackage[printonlyused]{acronym}
-
-% start all words with a capital letter in the list of abbreviations
-\usepackage{mfirstuc}
-\makeatletter
-\patchcmd{\AC@@acro}{] #3}{] \capitalisewords{#3}}{}{}
-\makeatother
 
 
 % ##################################################
